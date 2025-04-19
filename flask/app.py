@@ -1,20 +1,23 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import joblib
 
 app = Flask(__name__)
-CORS(app)  # Allows requests from Next.js frontend (avoid CORS issues)
+CORS(app)  # Enable CORS
 
-@app.route('/api/data', methods=['POST'])
-def receive_data():
-    data = request.json
-    print("Received from frontend:", data)
-    response = {"message": "Data received", "echo": data}
-    return jsonify(response)
+# Load ML model
+model = joblib.load('path/to/your_model.pkl')
 
-@app.route('/api/data', methods=['GET'])
-def send_data():
-    data_to_send = {"message": "Hello from Flask!", "value": 42}
-    return jsonify(data_to_send)
+@app.route('/predict', methods=['POST'])
+def predict():
+    try:
+        data = request.json
+        # Process input data for model (adjust as needed)
+        features = data['features']
+        prediction = model.predict([features]).tolist()  # Convert to list
+        return jsonify({'prediction': prediction[0]})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
