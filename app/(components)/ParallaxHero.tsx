@@ -64,7 +64,7 @@ const ParallaxHero: React.FC = () => {
         <img
           src="/parallax/bg.png"
           alt="bg"
-          className="layer-bg absolute inset-0 w-full h-full object-cover z-0"
+          className="layer-bg absolute inset-0 w-full h-full object-cover z-0 rounded-3xl"
         />
 
         {/* Midground */}
@@ -95,16 +95,16 @@ const ParallaxHero: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-10">
             {[
               {
-                title: 'Scroll Secrets',
-                desc: 'Reveal content dynamically as users scroll with smooth layered animations.'
+                title: 'Explore Your World',
+                desc: 'Uncover every character, place, and plotline—across novels, scripts, or comics—in one view.'
               },
               {
-                title: 'Mystic UI',
-                desc: 'Stunning visual gradients and vibrant design to match your creative spirit.'
+                title: 'Build Universe',
+                desc: 'We read your past books to suggest new plot twists, character arcs, and story ideas—so your next chapter feels fresh but still fits perfectly into your world.'
               },
               {
-                title: 'Performance Magic',
-                desc: 'Optimized parallax with GSAP & Framer Motion for fast, smooth storytelling.'
+                title: 'Spot Contradictions',
+                desc: 'Drop in a paragraph or scene, and instantly see if it clashes with your canon'
               }
             ].map((feature, idx) => (
               <motion.div
