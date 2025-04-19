@@ -12,10 +12,15 @@ export default function ContradictionPage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
       setFileName(e.target.files[0].name)
+
+      // Optionally handle file reading here in future
+      // Example: const file = e.target.files[0];
+      // setFile(file); and send it in FormData to Flask
     }
   }
 
   const handleSubmit = async () => {
+    setLoading(true)
     try {
       const res = await fetch("http://localhost:5000/chat", {
         method: "POST",
@@ -24,14 +29,17 @@ export default function ContradictionPage() {
         },
         body: JSON.stringify({ message: textInput }),
       });
-  
+
       const data = await res.json();
       console.log("Response from Flask:", data.response);
-      // You can update a state variable like `setBotResponse(data.response)` to display it
+      setOutput(data.response); // ✅ Set output to show in box
     } catch (err) {
       console.error("Error calling Flask API:", err);
-      }
-    };
+      setOutput("An error occurred while fetching the result.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-zinc-900 to-black text-white py-12 px-6">
@@ -70,12 +78,18 @@ export default function ContradictionPage() {
         <button
           onClick={handleSubmit}
           className="bg-purple-600 hover:bg-purple-700 transition-all px-6 py-3 rounded-lg text-lg font-semibold shadow-lg"
+          disabled={loading}
         >
           {loading ? 'Checking...' : 'Detect Contradictions'}
         </button>
 
-        {/* Output */}
-        {output && (
+        {/* Loading Message */}
+        {loading && (
+          <p className="text-zinc-400 italic text-center">Analyzing for contradictions...</p>
+        )}
+
+        {/* Output Box */}
+        {output && !loading && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -83,7 +97,7 @@ export default function ContradictionPage() {
             className="bg-zinc-800 p-6 rounded-xl border border-zinc-600 shadow-md"
           >
             <h2 className="text-xl font-semibold mb-2 text-purple-400">Result:</h2>
-            <p className="text-gray-200">{output}</p>
+            <p className="text-gray-200 whitespace-pre-line">{output}</p>
           </motion.div>
         )}
       </div>
