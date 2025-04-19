@@ -1,0 +1,7 @@
+{
+    "Gryffindor": ["Harry Potter", "Hermione Granger", "Ron Weasley", "Minerva McGonagall", "Rubeus Hagrid", "Neville Longbottom", "Ginny Weasley", "Sirius Black", "Remus Lupin", "Arthur Weasley"],
+    "Slytherin": ["Draco Malfoy", "Severus Snape", "Bellatrix Lestrange", "Dolores Umbridge", "Lucius Malfoy", "Vincent Crabbe"],
+    "Ravenclaw": ["Cho Chang", "Luna Lovegood"],
+    "Hufflepuff": ["Cedric Diggory"],
+    "Professor": ["Kingsley Shacklebolt", "Mrs Norris", "Argus Filch", "Horace Slughorn", "Gregory Goyle", "Lord Voldemort"]
+}
