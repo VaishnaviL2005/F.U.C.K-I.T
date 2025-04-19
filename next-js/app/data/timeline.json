@@ -1,0 +1,359 @@
+[
+    {
+        "event": "Voldemort attacks the Potters, Harry survives",
+        "characters": [
+            "Voldemort",
+            "Harry Potter",
+            "James Potter",
+            "Lily Potter"
+        ],
+        "location": "Godric's Hollow",
+        "date": "October 31st, 1981"
+    },
+    {
+        "event": "Harry left at the Dursley's doorstep",
+        "characters": [
+            "Harry Potter",
+            "Albus Dumbledore",
+            "Professor McGonagall",
+            "Hagrid"
+        ],
+        "location": "4 Privet Drive, Little Whinging",
+        "date": "November 1st, 1981"
+    },
+    {
+        "event": "Harry grows up with the Dursleys, mistreated and neglected",
+        "characters": [
+            "Harry Potter",
+            "Vernon Dursley",
+            "Petunia Dursley",
+            "Dudley Dursley"
+        ],
+        "location": "4 Privet Drive",
+        "date": "1981-1991"
+    },
+    {
+        "event": "Trip to the zoo and the snake incident",
+        "characters": [
+            "Harry Potter",
+            "Dudley Dursley",
+            "Piers Polkiss"
+        ],
+        "location": "Zoo (Reptile House)",
+        "date": "July 1991"
+    },
+    {
+        "event": "Hogwarts letters arrive",
+        "characters": [
+            "Harry Potter",
+            "Vernon Dursley",
+            "Petunia Dursley"
+        ],
+        "location": "4 Privet Drive, then hotel and hut on the sea",
+        "date": "July 1991"
+    },
+    {
+        "event": "Hagrid delivers the Hogwarts letter in person",
+        "characters": [
+            "Harry Potter",
+            "Hagrid"
+        ],
+        "location": "Hut on the Rock",
+        "date": "July 31st, 1991"
+    },
+    {
+        "event": "Shopping at Diagon Alley",
+        "characters": [
+            "Harry Potter",
+            "Hagrid",
+            "Griphook",
+            "Ollivander"
+        ],
+        "location": "Diagon Alley, Gringotts, Ollivanders",
+        "date": "August 1991"
+    },
+    {
+        "event": "Harry boards the Hogwarts Express, meets Ron and Hermione",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger",
+            "Draco Malfoy",
+            "Neville Longbottom"
+        ],
+        "location": "Platform 9\u00be, Hogwarts Express",
+        "date": "September 1st, 1991"
+    },
+    {
+        "event": "Sorting Hat Ceremony",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger",
+            "Draco Malfoy",
+            "Dumbledore"
+        ],
+        "location": "Hogwarts Great Hall",
+        "date": "September 1st, 1991 (Evening)"
+    },
+    {
+        "event": "First Flying Lesson and discovery of Harry\u2019s Quidditch talent",
+        "characters": [
+            "Harry Potter",
+            "Madam Hooch",
+            "Draco Malfoy",
+            "Neville Longbottom",
+            "McGonagall"
+        ],
+        "location": "Hogwarts Quidditch Field",
+        "date": "September 1991"
+    },
+    {
+        "event": "Harry becomes Gryffindor Seeker",
+        "characters": [
+            "Harry Potter",
+            "McGonagall",
+            "Oliver Wood"
+        ],
+        "location": "Hogwarts",
+        "date": "September 1991"
+    },
+    {
+        "event": "Troll attack on Halloween",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger",
+            "Quirrell",
+            "Troll"
+        ],
+        "location": "Hogwarts Girls' Bathroom",
+        "date": "October 31st, 1991"
+    },
+    {
+        "event": "Quidditch Match vs Slytherin and suspicious broom",
+        "characters": [
+            "Harry Potter",
+            "Snape",
+            "Hermione Granger",
+            "Ron Weasley",
+            "Quirrell"
+        ],
+        "location": "Hogwarts Quidditch Pitch",
+        "date": "November 1991"
+    },
+    {
+        "event": "Discovery of Fluffy guarding the trapdoor",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger"
+        ],
+        "location": "Third-floor corridor, Hogwarts",
+        "date": "November 1991"
+    },
+    {
+        "event": "Christmas at Hogwarts and Invisibility Cloak",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Dumbledore"
+        ],
+        "location": "Hogwarts",
+        "date": "December 25th, 1991"
+    },
+    {
+        "event": "Mirror of Erised",
+        "characters": [
+            "Harry Potter",
+            "Dumbledore"
+        ],
+        "location": "Hogwarts",
+        "date": "December 1991"
+    },
+    {
+        "event": "Hagrid wins a dragon egg",
+        "characters": [
+            "Hagrid",
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger"
+        ],
+        "location": "Hut on Hogwarts grounds",
+        "date": "Spring 1992"
+    },
+    {
+        "event": "Norbert the dragon hatches and is sent away",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger",
+            "Hagrid",
+            "Charlie Weasley"
+        ],
+        "location": "Astronomy Tower, Hogwarts",
+        "date": "Spring 1992"
+    },
+    {
+        "event": "Detention in the Forbidden Forest",
+        "characters": [
+            "Harry Potter",
+            "Draco Malfoy",
+            "Hagrid",
+            "Firenze",
+            "Unicorn",
+            "Voldemort"
+        ],
+        "location": "Forbidden Forest",
+        "date": "Spring 1992"
+    },
+    {
+        "event": "Discovery of Nicolas Flamel and the Philosopher's Stone",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger"
+        ],
+        "location": "Hogwarts Library",
+        "date": "Spring 1992"
+    },
+    {
+        "event": "Final exams and plans to protect the Stone",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger",
+            "Dumbledore"
+        ],
+        "location": "Hogwarts",
+        "date": "June 1992"
+    },
+    {
+        "event": "Descent through the trapdoor to retrieve the Stone",
+        "characters": [
+            "Harry Potter",
+            "Ron Weasley",
+            "Hermione Granger",
+            "Fluffy",
+            "Quirrell",
+            "Voldemort"
+        ],
+        "location": "Chamber under Hogwarts",
+        "date": "June 1992"
+    },
+    {
+        "event": "Confrontation with Quirrell and Voldemort",
+        "characters": [
+            "Harry Potter",
+            "Quirrell",
+            "Voldemort"
+        ],
+        "location": "Underground Chambers, Hogwarts",
+        "date": "June 1992"
+    },
+    {
+        "event": "Harry wakes in the hospital and talks to Dumbledore",
+        "characters": [
+            "Harry Potter",
+            "Dumbledore"
+        ],
+        "location": "Hogwarts Hospital Wing",
+        "date": "June 1992"
+    },
+    {
+        "event": "End of year feast and Gryffindor wins House Cup",
+        "characters": [
+            "Harry Potter",
+            "Dumbledore",
+            "House members"
+        ],
+        "location": "Hogwarts Great Hall",
+        "date": "End of school year, June 1992"
+    },
+    {
+        "event": "Return to Dursleys for the summer",
+        "characters": [
+            "Harry Potter"
+        ],
+        "location": "Platform 9\u00be, Hogwarts Express, 4 Privet Drive",
+        "date": "June 1992"
+    },
+    {
+        "event": "Harry meets Draco Malfoy at Madam Malkin\u2019s",
+        "characters": [
+            "Harry Potter",
+            "Draco Malfoy"
+        ],
+        "location": "Madam Malkin\u2019s Robes for All Occasions, Diagon Alley",
+        "date": "August 1991"
+    },
+    {
+        "event": "Harry learns about Gringotts and vaults",
+        "characters": [
+            "Harry Potter",
+            "Hagrid",
+            "Griphook"
+        ],
+        "location": "Gringotts Wizarding Bank",
+        "date": "August 1991"
+    },
+    {
+        "event": "First Potions class with Snape",
+        "characters": [
+            "Harry Potter",
+            "Severus Snape",
+            "Ron Weasley"
+        ],
+        "location": "Hogwarts Dungeon",
+        "date": "Early September 1991"
+    },
+    {
+        "event": "Learning about the Restricted Section",
+        "characters": [
+            "Harry Potter",
+            "Hermione Granger",
+            "Ron Weasley"
+        ],
+        "location": "Hogwarts Library",
+        "date": "Various dates in Fall 1991"
+    },
+    {
+        "event": "Harry's first Quidditch practice",
+        "characters": [
+            "Harry Potter",
+            "Oliver Wood"
+        ],
+        "location": "Hogwarts Quidditch Pitch",
+        "date": "October 1991"
+    },
+    {
+        "event": "Detention and Forbidden Forest encounter with Voldemort drinking unicorn blood",
+        "characters": [
+            "Harry Potter",
+            "Hagrid",
+            "Draco Malfoy",
+            "Firenze"
+        ],
+        "location": "Forbidden Forest",
+        "date": "Spring 1992"
+    },
+    {
+        "event": "Hermione solves Snape's logic puzzle",
+        "characters": [
+            "Hermione Granger",
+            "Harry Potter"
+        ],
+        "location": "Chamber under Hogwarts",
+        "date": "June 1992"
+    },
+    {
+        "event": "Ron plays wizard chess to help Harry reach the Stone",
+        "characters": [
+            "Ron Weasley",
+            "Harry Potter",
+            "Hermione Granger"
+        ],
+        "location": "Chamber under Hogwarts",
+        "date": "June 1992"
+    }
+]
