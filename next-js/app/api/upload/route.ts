@@ -1,57 +1,46 @@
 import { NextResponse } from 'next/server';
-import formidable from 'formidable';
+import path from 'path';
 import fs from 'fs/promises';
 import { IncomingMessage } from 'http';
+import csv from 'papaparse'; // Install this via npm if you haven't already
 
 export async function POST(req: Request) {
-  // Check if IncomingForm is available
-  if (typeof formidable.IncomingForm !== 'function') {
-    return NextResponse.json(
-      { message: 'Server error: Formidable not compatible with current bundler' },
-      { status: 500 }
-    );
-  }
-
-  const form = new formidable.IncomingForm({
-    uploadDir: './public/uploads',
-    keepExtensions: true,
-    maxFileSize: 5 * 1024 * 1024, // 5MB limit
-    filter: ({ mimetype }: { mimetype?: string | null }) => {
-      const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-      return mimetype ? allowedTypes.includes(mimetype) : false;
-    },
-  });
+  // Ensure the Characters.csv file exists
+  const charactersFilePath = path.resolve('./public/Characters.csv');
 
   try {
-    await fs.mkdir('./public/uploads', { recursive: true });
-
-    const { fields, files } = await new Promise<{
-      fields: formidable.Fields;
-      files: formidable.Files;
-    }>((resolve, reject) => {
-      form.parse(req as unknown as IncomingMessage, (err, fields, files) => {
-        if (err) reject(err);
-        resolve({ fields, files });
-      });
-    });
-
-    const file = files.file?.[0];
-    if (!file) {
-      return NextResponse.json({ message: 'No file uploaded' }, { status: 400 });
+    const query = new URL(req.url).searchParams.get('query'); // Get the query from the URL
+    
+    if (!query) {
+      return NextResponse.json(
+        { message: 'Query parameter is missing.' },
+        { status: 400 }
+      );
     }
 
-    const safeFileName = file.originalFilename?.replace(/[^a-zA-Z0-9.-]/g, '_');
+    // Read the CSV file
+    const csvFile = await fs.readFile(charactersFilePath, 'utf-8');
 
-    return NextResponse.json({
-      message: 'File uploaded successfully',
-      filePath: file.filepath,
-      fileName: safeFileName,
-    });
-  } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown server error';
-    console.error('Upload error:', errorMessage); // Log for debugging
+    // Parse CSV file content
+    const { data } = csv.parse(csvFile, { header: true });
+
+    // Filter the data based on the query
+    const result = data.filter((row: any) =>
+      row.Name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    if (result.length === 0) {
+      return NextResponse.json(
+        { message: 'No characters found matching the query.' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ message: 'Search successful', data: result });
+  } catch (error: any) {
+    console.error('Search error:', error);
     return NextResponse.json(
-      { message: 'Error uploading file', error: errorMessage },
+      { message: 'Error reading or processing CSV', error: error.message },
       { status: 500 }
     );
   }
