@@ -16,14 +16,22 @@ export default function ContradictionPage() {
   }
 
   const handleSubmit = async () => {
-    setLoading(true)
-    // Call Flask API here with either textInput or uploaded file
-    // setOutput(response.data)
-    setTimeout(() => {
-      setOutput('Detected contradiction between sentence A and B.') // Demo
-      setLoading(false)
-    }, 2000)
-  }
+    try {
+      const res = await fetch("http://localhost:5000/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: textInput }),
+      });
+  
+      const data = await res.json();
+      console.log("Response from Flask:", data.response);
+      // You can update a state variable like `setBotResponse(data.response)` to display it
+    } catch (err) {
+      console.error("Error calling Flask API:", err);
+      }
+    };
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-zinc-900 to-black text-white py-12 px-6">
