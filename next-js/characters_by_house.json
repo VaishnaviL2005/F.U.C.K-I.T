@@ -1,7 +1,66 @@
 {
-    "Gryffindor": ["Harry Potter", "Hermione Granger", "Ron Weasley", "Minerva McGonagall", "Rubeus Hagrid", "Neville Longbottom", "Ginny Weasley", "Sirius Black", "Remus Lupin", "Arthur Weasley"],
-    "Slytherin": ["Draco Malfoy", "Severus Snape", "Bellatrix Lestrange", "Dolores Umbridge", "Lucius Malfoy", "Vincent Crabbe"],
-    "Ravenclaw": ["Cho Chang", "Luna Lovegood"],
-    "Hufflepuff": ["Cedric Diggory"],
-    "Professor": ["Kingsley Shacklebolt", "Mrs Norris", "Argus Filch", "Horace Slughorn", "Gregory Goyle", "Lord Voldemort"]
+    "Gryffindor": [
+        "Harry Potter", 
+        "Hermione Granger", 
+        "Ron Weasley", 
+        "Minerva McGonagall", 
+        "Rubeus Hagrid", 
+        "Neville Longbottom", 
+        "Ginny Weasley", 
+        "Sirius Black", 
+        "Remus Lupin", 
+        "Arthur Weasley",
+        "Fred Weasley", 
+        "George Weasley", 
+        "Percy Weasley", 
+        "Seamus Finnigan",
+        "Dean Thomas",
+        "Lavender Brown",
+        "Parvati Patil"
+    ],
+    "Slytherin": [
+        "Draco Malfoy", 
+        "Severus Snape",
+        "Gregory Goyle", 
+        "Lord Voldemort",
+        "Bellatrix Lestrange", 
+        "Dolores Umbridge", 
+        "Lucius Malfoy", 
+        "Vincent Crabbe",
+        "Pansy Parkinson", 
+        "Blaise Zabini", 
+        "Millicent Bulstrode",
+        "Theodore Nott", 
+        "Astoria Greengrass"
+    ],
+    "Ravenclaw": [
+        "Cho Chang", 
+        "Luna Lovegood",
+        "Filius Flitwick", 
+        "Padma Patil",
+        "Michael Corner",
+        "Anthony Goldstein",
+        "Terry Boot"
+    ],
+    "Hufflepuff": [
+        "Cedric Diggory" , 
+        "Kingsley Shacklebolt",
+        "Nymphadora Tonks", 
+        "Ernie Macmillan",
+        "Hannah Abbott", 
+        "Susan Bones", 
+        "Justin Finch-Fletchley"
+    ],
+    "Unknown": [ 
+        "Mrs Norris", 
+        "Argus Filch", 
+        "Horace Slughorn", 
+        "Gregory Goyle",
+        "Colin Creevey", 
+        "Dean Thomas",
+        "Percival Weasley",
+        "Rita Skeeter", 
+        "Ludo Bagman", 
+        "Madam Poppy Pomfrey"
+    ]
 }
