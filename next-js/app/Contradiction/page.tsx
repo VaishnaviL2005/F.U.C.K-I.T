@@ -2,6 +2,10 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
+
+// ✅ Set PDF worker from public folder
+GlobalWorkerOptions.workerSrc = '/pdfWorker.js'
 
 export default function ContradictionPage() {
   const [textInput, setTextInput] = useState('')
@@ -9,37 +13,64 @@ export default function ContradictionPage() {
   const [output, setOutput] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.[0]) {
-      setFileName(e.target.files[0].name)
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
 
-      // Optionally handle file reading here in future
-      // Example: const file = e.target.files[0];
-      // setFile(file); and send it in FormData to Flask
+    setFileName(file.name)
+
+    if (file.type === 'application/pdf') {
+      const reader = new FileReader()
+      reader.onload = async () => {
+        try {
+          const typedArray = new Uint8Array(reader.result as ArrayBuffer)
+          const pdf = await getDocument({ data: typedArray }).promise
+          let text = ''
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i)
+            const content = await page.getTextContent()
+            const strings = content.items.map((item: any) => item.str)
+            text += strings.join(' ') + '\n\n'
+          }
+          setTextInput(text)
+        } catch (err) {
+          console.error('Error reading PDF:', err)
+          setTextInput('Error reading PDF file.')
+        }
+      }
+      reader.readAsArrayBuffer(file)
+    } else if (file.type === 'text/plain') {
+      const reader = new FileReader()
+      reader.onload = () => {
+        setTextInput(reader.result as string)
+      }
+      reader.readAsText(file)
+    } else {
+      setTextInput('Unsupported file type. Please upload a TXT or PDF file.')
     }
   }
 
   const handleSubmit = async () => {
     setLoading(true)
     try {
-      const res = await fetch("http://localhost:5000/chat", {
-        method: "POST",
+      const res = await fetch('http://localhost:5000/chat', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ message: textInput }),
-      });
+      })
 
-      const data = await res.json();
-      console.log("Response from Flask:", data.response);
-      setOutput(data.response); // ✅ Set output to show in box
+      const data = await res.json()
+      console.log('Response from Flask:', data.response)
+      setOutput(data.response)
     } catch (err) {
-      console.error("Error calling Flask API:", err);
-      setOutput("An error occurred while fetching the result.");
+      console.error('Error calling Flask API:', err)
+      setOutput('An error occurred while fetching the result.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-zinc-900 to-black bg-[url('/contradictionbg.png')] bg-cover bg-center bg-no-repeat text-white py-12 px-6">
@@ -53,7 +84,6 @@ export default function ContradictionPage() {
           Contradiction Detector
         </motion.h1>
 
-        {/* Textarea Input */}
         <textarea
           placeholder="Enter your text here..."
           value={textInput}
@@ -62,7 +92,6 @@ export default function ContradictionPage() {
           rows={6}
         />
 
-        {/* OR File Upload */}
         <div className="flex flex-col items-start gap-2">
           <label className="text-sm text-zinc-400">Or upload a file (TXT/PDF):</label>
           <input
@@ -74,7 +103,6 @@ export default function ContradictionPage() {
           {fileName && <p className="text-sm text-zinc-300">Selected: {fileName}</p>}
         </div>
 
-        {/* Submit Button */}
         <button
           onClick={handleSubmit}
           className="bg-purple-600 hover:bg-purple-700 transition-all px-6 py-3 rounded-lg text-lg font-semibold shadow-lg"
@@ -83,12 +111,10 @@ export default function ContradictionPage() {
           {loading ? 'Checking...' : 'Detect Contradictions'}
         </button>
 
-        {/* Loading Message */}
         {loading && (
           <p className="text-zinc-400 italic text-center">Analyzing for contradictions...</p>
         )}
 
-        {/* Output Box */}
         {output && !loading && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}

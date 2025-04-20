@@ -49,7 +49,7 @@ const ParallaxHero: React.FC = () => {
     {
       title: 'Build Universe',
       desc: 'We read your past books to suggest new plot twists, character arcs, and story ideas—so your next chapter feels fresh but still fits perfectly into your world.',
-      link: '/build'
+      link: '/Buildgraph'
     },
     {
       title: 'Spot Contradictions',
