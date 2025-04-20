@@ -2,7 +2,7 @@
 
 import { motion, useScroll } from 'framer-motion'
 import { useRef } from 'react'
-import timelineData from '@/app/data/timeline.json'
+import timelineData from '../data/timeline.json'
 
 type TimelineEvent = {
   event: string
@@ -23,7 +23,7 @@ export default function Timeline() {
         ref={ref}
         className="relative bg-cover bg-center bg-no-repeat text-white overflow-hidden"
         style={{
-          backgroundImage: 'url(/timelinebg.jpg)',
+          backgroundImage: 'url(/timelinebg1.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed', // Keeps background fixed during scroll
@@ -35,7 +35,10 @@ export default function Timeline() {
           className="absolute left-1/2 transform -translate-x-1/2 top-0 w-1 origin-top bg-purple-600 h-full"
         />
         <div className="text-center py-12">
-        <h1 className="text-8xl font-bold bg-gradient-to-b from-gray-200 to-purple-800 bg-clip-text text-transparent drop-shadow-lg">Explore Timeline</h1>
+        <h1 className="text-8xl font-bold bg-gradient-to-b from-purple-900 to-gray-200 bg-clip-text text-transparent drop-shadow-xl">
+          Explore Timeline
+        </h1>
+
         </div>
 
         <div className="space-y-24 max-w-4xl mx-auto">

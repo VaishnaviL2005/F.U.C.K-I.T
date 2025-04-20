@@ -44,3 +44,26 @@ body {
                0 0 20px rgba(255, 255, 255, 0.5),
                0 0 40px rgba(255, 255, 255, 0.3);
 }
+
+/* Add this to your global styles or a CSS file */
+@keyframes borderAnimation {
+  0% {
+    border-color: rgb(249, 199, 199);
+  }
+  25% {
+    border-color: #ff816a;
+  }
+  50% {
+    border-color: #f84aa6;
+  }
+  75% {
+    border-color: #dec6f5;
+  }
+  100% {
+    border-color: #f0de7a;
+  }
+}
+
+.animate-border {
+  animation: borderAnimation 4s infinite;
+}
