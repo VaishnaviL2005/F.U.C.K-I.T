@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,7 +13,6 @@ const ParallaxHero: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Background slow parallax + fade and shrink
       gsap.to('.layer-bg', {
         y: '-10%',
         scale: 0.9,
@@ -25,7 +25,6 @@ const ParallaxHero: React.FC = () => {
         }
       })
 
-      // Mid layer parallax
       gsap.to('.layer-mid', {
         y: '-20%',
         scale: 0.6,
@@ -40,6 +39,24 @@ const ParallaxHero: React.FC = () => {
 
     return () => ctx.revert()
   }, [])
+
+  const features = [
+    {
+      title: 'Explore Your World',
+      desc: 'Uncover every character, place, and plotline—across novels, scripts, or comics—in one view.',
+      link: '/Timeline'
+    },
+    {
+      title: 'Build Universe',
+      desc: 'We read your past books to suggest new plot twists, character arcs, and story ideas—so your next chapter feels fresh but still fits perfectly into your world.',
+      link: '/build'
+    },
+    {
+      title: 'Spot Contradictions',
+      desc: 'Drop in a paragraph or scene, and instantly see if it clashes with your canon',
+      link: '/Contradiction'
+    }
+  ]
 
   return (
     <div className="relative">
@@ -58,8 +75,6 @@ const ParallaxHero: React.FC = () => {
         ref={containerRef}
         className="relative h-[200vh] overflow-hidden bg-gradient-to-br from-pink-500 via-fuchsia-600 to-blue-700"
       >
-
-
         {/* Background */}
         <img
           src="/parallax/bg.png"
@@ -76,47 +91,33 @@ const ParallaxHero: React.FC = () => {
 
         {/* Text Content */}
         <div className="absolute top-1/2 left-1/2 z-30 transform -translate-x-1/2 -translate-y-1/2 text-white text-center px-4">
-          <h1 className="text-6xl md:text-7xl font-extrabold glow">
-            Welcome to VerseSync
-          </h1>
-          <p className="text-xl md:text-2xl mt-4 opacity-80">
-            Where secrets scroll into view...
-          </p>
+          <h1 className="text-8xl md:text-7xl font-extrabold glow">Welcome to VerseSync</h1>
+          <p className="text-xl md:text-2xl mt-4 opacity-80">Where Your Worlds Come Alive....</p>
         </div>
       </div>
 
       {/* Features Section */}
       <section
         id="features"
-        className="min-h-screen bg-gradient-to-br from-pink-500 via-fuchsia-600 to-blue-700 text-white py-20 px-8"
+        className="h-auto bg-gradient-to-br from-pink-500 via-fuchsia-600 to-blue-700 text-white py-20 px-8"
       >
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-10">Features</h2>
           <div className="grid md:grid-cols-3 gap-10">
-            {[
-              {
-                title: 'Explore Your World',
-                desc: 'Uncover every character, place, and plotline—across novels, scripts, or comics—in one view.'
-              },
-              {
-                title: 'Build Universe',
-                desc: 'We read your past books to suggest new plot twists, character arcs, and story ideas—so your next chapter feels fresh but still fits perfectly into your world.'
-              },
-              {
-                title: 'Spot Contradictions',
-                desc: 'Drop in a paragraph or scene, and instantly see if it clashes with your canon'
-              }
-            ].map((feature, idx) => (
+            {features.map((feature, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:scale-105 transition-transform"
               >
-                <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-white/90">{feature.desc}</p>
+                <Link href={feature.link}>
+                  <div className="cursor-pointer bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:scale-105 transition-transform hover:bg-white/20 hover:backdrop-blur-2xl">
+                    <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-sm text-white/90">{feature.desc}</p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
