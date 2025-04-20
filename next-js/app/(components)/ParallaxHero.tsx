@@ -61,8 +61,13 @@ const ParallaxHero: React.FC = () => {
   return (
     <div className="relative">
       {/* Navbar */}
-      <div className="fixed top-0 left-0 w-full z-50 px-8 py-4 flex justify-between items-center transition-all duration-500 ease-in-out text-black font-bold backdrop-blur-md bg-white/10">
-        <div className="text-xl">VerseSync</div>
+      <div className="fixed top-0 left-0 w-full z-50 px-8 py-4 flex justify-between items-center transition-all duration-500 ease-in-out text-white font-bold backdrop-blur-md bg-white/10">
+        <div className="text-xl"><img
+          src="/logobg.png"
+          alt="VerseSync Logo"
+          className="h-14 w-auto"
+        />
+</div>
         <nav className="space-x-6">
           <a href="#features" className="hover:text-pink-500 transition-colors">Features</a>
           <a href="#about" className="hover:text-blue-500 transition-colors">About</a>
