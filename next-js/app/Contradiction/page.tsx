@@ -53,7 +53,7 @@ export default function ContradictionPage() {
   const handleSubmit = async () => {
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:5000/chat', {
+      const res = await fetch('https://f-u-c-k-i-t.onrender.com/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
