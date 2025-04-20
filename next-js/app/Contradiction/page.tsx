@@ -42,13 +42,13 @@ export default function ContradictionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-zinc-900 to-black text-white py-12 px-6">
+    <div className="min-h-screen bg-gradient-to-tr from-zinc-900 to-black bg-[url('/contradictionbg.png')] bg-cover bg-center bg-no-repeat text-white py-12 px-6">
       <div className="max-w-4xl mx-auto space-y-8">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-6xl font-bold text-center bg-gradient-to-r from-fuchsia-400 via-purple-400 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"
+          className="text-6xl font-bold text-center bg-gradient-to-r from-white-400 via-purple-400 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"
         >
           Contradiction Detector
         </motion.h1>
