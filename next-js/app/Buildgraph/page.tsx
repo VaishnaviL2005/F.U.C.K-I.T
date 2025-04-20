@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { DataSet, Network } from 'vis-network/standalone/esm/vis-network'
 
 // House colors
@@ -38,24 +38,57 @@ const houseData: Record<string, string[]> = {
 
 // Friendship data between characters (inter-house connections)
 const friendships: [string, string][] = [
-  ["Harry Potter", "Luna Lovegood"], // Gryffindor ↔ Ravenclaw
-  ["Cedric Diggory", "Harry Potter"], // Hufflepuff ↔ Gryffindor
-  ["Hermione Granger", "Padma Patil"], // Gryffindor ↔ Ravenclaw
-  ["Ron Weasley", "Dean Thomas"], // Gryffindor ↔ Hufflepuff
-  ["Ginny Weasley", "Luna Lovegood"], // Gryffindor ↔ Ravenclaw
-  ["Neville Longbottom", "Cedric Diggory"], // Gryffindor ↔ Hufflepuff
-  ["Sirius Black", "Remus Lupin"], // Gryffindor ↔ Gryffindor
-  ["Fred Weasley", "George Weasley"], // Gryffindor ↔ Gryffindor
-  ["Harry Potter", "Draco Malfoy"], // Gryffindor ↔ Slytherin
-  ["Hermione Granger", "Cho Chang"], // Gryffindor ↔ Ravenclaw
-  ["Ron Weasley", "Ernie Macmillan"], // Gryffindor ↔ Hufflepuff
-  ["Neville Longbottom", "Pansy Parkinson"], // Gryffindor ↔ Slytherin
-  ["Luna Lovegood", "Cedric Diggory"], // Ravenclaw ↔ Hufflepuff
-  ["Sirius Black", "Bellatrix Lestrange"], // Gryffindor ↔ Slytherin
+  ["Harry Potter", "Luna Lovegood"],
+  ["Cedric Diggory", "Harry Potter"],
+  ["Hermione Granger", "Padma Patil"],
+  ["Ron Weasley", "Dean Thomas"],
+  ["Ginny Weasley", "Luna Lovegood"],
+  ["Neville Longbottom", "Cedric Diggory"],
+  ["Sirius Black", "Remus Lupin"],
+  ["Fred Weasley", "George Weasley"],
+  ["Harry Potter", "Draco Malfoy"],
+  ["Hermione Granger", "Cho Chang"],
+  ["Ron Weasley", "Ernie Macmillan"],
+  ["Neville Longbottom", "Pansy Parkinson"],
+  ["Luna Lovegood", "Cedric Diggory"],
+  ["Sirius Black", "Bellatrix Lestrange"],
+]
+
+// Family relation data
+const familyRelations: [string, string][] = [
+  ["Harry Potter", "Lily Potter"],
+  ["Harry Potter", "James Potter"],
+  ["Harry Potter", "Petunia Dursley"],
+  ["Harry Potter", "Vernon Dursley"],
+  ["Harry Potter", "Dudley Dursley"],
+  ["Petunia Dursley", "Lily Potter"],
+  ["James Potter", "Sirius Black"],
+  ["Ron Weasley", "Fred Weasley"],
+  ["Ron Weasley", "George Weasley"],
+  ["Ron Weasley", "Percy Weasley"],
+  ["Fred Weasley", "George Weasley"],
+  ["Ron Weasley", "Ginny Weasley"],
+  ["Fred Weasley", "Ginny Weasley"],
+  ["George Weasley", "Ginny Weasley"],
+  ["Percy Weasley", "Ginny Weasley"],
+  ["Arthur Weasley", "Ron Weasley"],
+  ["Arthur Weasley", "Fred Weasley"],
+  ["Arthur Weasley", "George Weasley"],
+  ["Arthur Weasley", "Percy Weasley"],
+  ["Arthur Weasley", "Ginny Weasley"],
+  ["Arthur Weasley", "Molly Weasley"],
+  ["Molly Weasley", "Ron Weasley"],
+  ["Molly Weasley", "Fred Weasley"],
+  ["Molly Weasley", "George Weasley"],
+  ["Molly Weasley", "Percy Weasley"],
+  ["Molly Weasley", "Ginny Weasley"],
+  ["Molly Weasley", "Arthur Weasley"],
+  ["Draco Malfoy", ""],
 ]
 
 export default function BuildGraph() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null)
 
   useEffect(() => {
     const nodes = new DataSet<any>()
@@ -98,9 +131,22 @@ export default function BuildGraph() {
         edges.add({
           from: nodeMap[char1],
           to: nodeMap[char2],
-          color: '#FFD700', // gold for friendship edges
+          color: '#FFD700', // gold
           width: 2,
           arrows: 'to',
+        })
+      }
+    })
+
+    // Add family relation edges
+    familyRelations.forEach(([char1, char2]) => {
+      if (nodeMap[char1] && nodeMap[char2]) {
+        edges.add({
+          from: nodeMap[char1],
+          to: nodeMap[char2],
+          color: '#00BFFF', // sky blue
+          width: 1.5,
+          dashes: true,
         })
       }
     })
@@ -128,7 +174,21 @@ export default function BuildGraph() {
     }
 
     if (containerRef.current) {
-      new Network(containerRef.current, data, options)
+      const network = new Network(containerRef.current, data, options)
+
+      // Event listener for when a node is clicked
+      network.on('click', (event) => {
+        const { nodes: clickedNodes } = event
+        if (clickedNodes.length > 0) {
+          const nodeId = clickedNodes[0]
+          const characterNodes = nodes.get(nodeId)
+
+          if (Array.isArray(characterNodes) && characterNodes.length > 0) {
+            const characterName = characterNodes[0].label
+            setSelectedCharacter(characterName) // Set selected character name
+          }
+        }
+      })
     }
   }, [])
 
@@ -148,10 +208,7 @@ export default function BuildGraph() {
           <div className="space-y-2">
             {Object.entries(houseColors).map(([house, color]) => (
               <div key={house} className="flex items-center gap-3">
-                <span
-                  className="w-4 h-4 rounded-full inline-block"
-                  style={{ backgroundColor: color }}
-                />
+                <span className="w-4 h-4 rounded-full inline-block" style={{ backgroundColor: color }} />
                 <span>{house}</span>
               </div>
             ))}
@@ -161,13 +218,25 @@ export default function BuildGraph() {
             <span className="w-4 h-1 rounded-full bg-yellow-400 inline-block" />
             <span>Friendship edge</span>
           </div>
+          <div className="flex items-center gap-3 mt-1">
+            <span className="w-4 h-1 rounded-full bg-sky-400 inline-block" />
+            <span>Family relation</span>
+          </div>
           <p className="text-xs text-zinc-400 mt-4 leading-tight">
-            Nodes represent characters.<br />
-            Gray edges = Same house connections.<br />
-            Gold arrows = Friendships across houses.
+            Nodes = characters<br />
+            Gray lines = Same house<br />
+            Gold arrows = Friendships<br />
+            Blue dashed = Family ties
           </p>
         </div>
       </div>
+
+      {/* Selected Character Info */}
+      {selectedCharacter && (
+        <div className="mt-6 p-4 bg-zinc-800 rounded-lg text-center text-xl text-yellow-400">
+          <h2>Selected Character: {selectedCharacter}</h2>
+        </div>
+      )}
     </div>
   )
 }
