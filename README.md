@@ -44,3 +44,12 @@ VerseSync leverages **Natural Language Processing** and **Knowledge Graphs** to 
   - Events & battles
   - Canon rules
 - Supports natural language queries (e.g., “Who betrayed X in timeline 2?”)
+
+---
+
+## 🎥 See It in Action
+
+Curious how VerseSync works in practice?  
+👉 **[Check out the demo video here]([https://your-video-link.com](https://drive.google.com/file/d/1ireA4aVWOGFPufiC0r5iwgTSuX5Pn-rE/view?usp=sharing))** to see the system in action!
+
+---
