@@ -50,6 +50,6 @@ VerseSync leverages **Natural Language Processing** and **Knowledge Graphs** to 
 ## 🎥 See It in Action
 
 Curious how VerseSync works in practice?  
-👉 **[Check out the demo video here]([https://your-video-link.com](https://drive.google.com/file/d/1ireA4aVWOGFPufiC0r5iwgTSuX5Pn-rE/view?usp=sharing))** to see the system in action!
+👉 **[Check out the demo video here](https://drive.google.com/file/d/1ireA4aVWOGFPufiC0r5iwgTSuX5Pn-rE/view?usp=drive_link)** to see the system in action!
 
 ---
